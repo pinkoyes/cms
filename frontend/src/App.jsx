@@ -1,9 +1,10 @@
 import './App.css'
+import { Outlet } from "react-router-dom"
 
 function App() {
   return (
     <>
-      <h1 className='text-2xl text-red-700'>in app component</h1>
+      <Outlet />
     </>
   )
 }
