@@ -1,57 +1,66 @@
 import { Schema, model } from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt, { hash } from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const collegeAdminSchema = new Schema(
     {
-        name: {
-            first: {
-                type: String,
-                required: [true, "first name is required"],
-                trim: true,
-                match: [/^[A-Za-z]+$/, "first should be in english alphabate only"],
-                minlength: 3,
-                maxlength: 19
-            },
-            middle: {
-                type: String,
-                trim: true,
-                default: null
-            },
-            last: {
-                type: String,
-                trim: true,
-                required: [true, "last name is required"],
-                match: [/^[A-Za-z]+$/, "last should be in english alphabate only"],
-                minlength: 3,
-                maxlength: 19
-            }
+        firstName: {
+            type: String,
+            required: true,
+            trim: true,
+            match: [/^[A-Za-z]+$/, "enter valid first name"],
+            minlength: 3,
+            maxlength: 19
+        },
+        lastName: {
+            type: String,
+            required: true,
+            trim: true,
+            match: [/^[A-Za-z]+$/, "enter valid last name"],
+            minlength: 3,
+            maxlength: 19
         },
         email: {
             type: String,
-            trim: true,
+            required: true,
             unique: true,
-            minlength: 3,
             lowercase: true,
-            required: [true, "email field is required"],
-            match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Please enter a valid email"]
+            trim: true,
+            match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email address'],
+            minlength: 5
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+            match: [/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/, 'Please provide a valid phone number'],
+            trim: true
         },
         password: {
             type: String,
-            required: [true, "Password field is required"],
+            required: true,
+            trim: true,
             minlength: 6,
             select: false
         },
-        refreshToken: {
+        role: {
             type: String,
-            select: false
+            enum: ['college-admin', 'depertment-head', 'register', 'adminssion-cell', 'faculty-member'],
+            required: true,
+        },
+        permission: {
+            type: [String],
+            enum: ['dashboard', 'manage-students', 'manage-courses', 'manage-depertment', 'manage-faculty', 'view-reports'],
+            default: ['dashboard']
+        },
+        refreshToken: {
+            type: String
         }
-    },
+    }, 
     { timestamps: true }
 );
 
 collegeAdminSchema.pre('save', async function (next) {
-    if (!this.isModified("password")) return next();
+    if (!this.isModified('password')) return next();
     this.password = await bcrypt.hash(this.password, 10);
     next();
 });
@@ -63,8 +72,7 @@ collegeAdminSchema.methods.isPasswordCorrect = async function (password) {
 collegeAdminSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
-            _id: this._id,
-            email: this.email
+            _id: this._id
         },
         process.env.ADMIN_ACCESS_TOKEN_SECRET,
         {
@@ -84,6 +92,5 @@ collegeAdminSchema.methods.generateRefreshToken = function () {
         }
     )
 }
-
 
 export const CollegeAdmin = model('CollegeAdmin', collegeAdminSchema);
