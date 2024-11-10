@@ -9,7 +9,7 @@ const collegeAdminSchema = new Schema(
                 type: String,
                 required: [true, "first name is required"],
                 trim: true,
-                match: [/^[A-Za-z]+$/, "only english alphabate"],
+                match: [/^[A-Za-z]+$/, "first should be in english alphabate only"],
                 minlength: 3,
                 maxlength: 19
             },
@@ -22,7 +22,7 @@ const collegeAdminSchema = new Schema(
                 type: String,
                 trim: true,
                 required: [true, "last name is required"],
-                match: [/^[A-Za-z]+$/, "only english alphabate"],
+                match: [/^[A-Za-z]+$/, "last should be in english alphabate only"],
                 minlength: 3,
                 maxlength: 19
             }
@@ -34,11 +34,11 @@ const collegeAdminSchema = new Schema(
             minlength: 3,
             lowercase: true,
             required: [true, "email field is required"],
-            match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "not valid email"]
+            match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Please enter a valid email"]
         },
         password: {
             type: String,
-            required: [true, "password field is required"],
+            required: [true, "Password field is required"],
             minlength: 6,
             select: false
         },
