@@ -74,9 +74,9 @@ collegeAdminSchema.methods.generateAccessToken = function () {
         {
             _id: this._id
         },
-        process.env.ADMIN_ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: process.env.ADMIN_ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
@@ -86,9 +86,9 @@ collegeAdminSchema.methods.generateRefreshToken = function () {
         {
             _id: this._id
         },
-        process.env.ADMIN_REFRESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: process.env.ADMIN_REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }

@@ -181,9 +181,9 @@ studentSchema.methods.generateAccessToken = function () {
         {
             _id: this._id
         },
-        process.env.STUDENT_ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: process.env.STUDENT_ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
@@ -193,9 +193,9 @@ studentSchema.methods.generateRefreshToken = function () {
         {
             _id: this._id
         },
-        process.env.STUDENT_REFRESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: process.env.STUDENT_REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
