@@ -53,7 +53,8 @@ const collegeAdminSchema = new Schema(
             default: ['dashboard']
         },
         refreshToken: {
-            type: String
+            type: String,
+            select: false
         }
     }, 
     { timestamps: true }
@@ -72,7 +73,8 @@ collegeAdminSchema.methods.isPasswordCorrect = async function (password) {
 collegeAdminSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
-            _id: this._id
+            _id: this._id,
+            role: "admin"
         },
         process.env.ACCESS_TOKEN_SECRET,
         {

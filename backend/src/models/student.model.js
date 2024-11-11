@@ -160,7 +160,8 @@ const studentSchema = new Schema(
             required: true,
         },
         refreshToken: {
-            type: String
+            type: String,
+            select: false
         }
     }, 
     { timestamps: true }
@@ -179,7 +180,8 @@ studentSchema.methods.isPasswordCorrect = async function (password) {
 studentSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
-            _id: this._id
+            _id: this._id,
+            role: "student"
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
