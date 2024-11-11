@@ -83,6 +83,11 @@ const collegeSchema = new Schema(
             max: [1000, 'Ranking is too high'],
             required: true,
         },
-        
+        department: {
+            type: Schema.Types.ObjectId,
+            ref: 'Department'
+        }
     }
-)
+);
+
+export const College = model('College', collegeSchema);
