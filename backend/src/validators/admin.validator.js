@@ -1,4 +1,4 @@
-import { object, string, minLength, maxLength, pattern, literal, union, optional, email, value } from "valibot";
+import { object, string, minLength, maxLength, pattern, literal, union } from "valibot";
 
 export const collegeAdminSchema = object({
     firstName: string([
@@ -25,7 +25,7 @@ export const collegeAdminSchema = object({
     password: string([
         minLength(6)
     ]).transform(value => value.trim()),
-    
+
     role: union([
         literal('college-admin'),
         literal('departement-head'),
