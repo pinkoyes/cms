@@ -18,6 +18,10 @@ const branchSchema = new Schema(
         college: {
             type: Schema.Types.ObjectId,
             ref: 'College'
+        },
+        branch_coordinator: {
+            type: String,
+            required: true
         }
     }, { timestamps: true }
 );
