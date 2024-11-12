@@ -23,6 +23,11 @@ const courseSchema = new Schema(
         collegeId: {
             type: Schema.Types.ObjectId,
             ref: 'College'
+        },
+        course_year: {
+            type: Number,
+            default: 1,
+            required: true
         }
     }, { timestamps: true }
 );

@@ -87,20 +87,17 @@ const studentSchema = new Schema(
             type: Date,
             default: Date.now,
         },
-        course: {
-            type: Schema.Types.ObjectId,
-            ref: 'Course',
-            required: true
-        },
         department: {
             type: Schema.Types.ObjectId,
-            ref: 'Department',
-            required: true,
+            ref: 'Department'
         },
-        yearOfStudy: {
-            type: String,
-            enum: [1, 2, 3, 4],
-            required: true,
+        course: {
+            type: Schema.Types.ObjectId,
+            ref: 'Course'
+        },
+        branch: {
+            type: Schema.Types.ObjectId,
+            ref: 'Branch'
         },
         cgpa: {
             type: Number,
