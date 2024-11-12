@@ -135,6 +135,9 @@ const studentSchema = new Schema(
         refreshToken: {
             type: String,
             select: false
+        },
+        acedemic_attendence: {
+            type: Number
         }
     }, 
     { timestamps: true }
