@@ -59,37 +59,13 @@ const studentSchema = new Schema(
             trim: true
         },
 
-        // address information
+        // Address Information
 
         address: {
-            street: {
-                type: String,
-                required: true,
-                trim: true
-            },
-            city: {
-                type: String,
-                required: true,
-                trim: true
-            },
-            state: {
-                type: String,
-                required: true,
-                trim: true
-            },
-            postalCode: {
-                type: String,
-                required: true,
-                trim: true,
-                unique: true
-            },
-            country: {
-                type: String,
-                required: true,
-                trim: true
-            }
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
         },
-
+        
         // Academic Information
 
         college: {

@@ -1,37 +1,5 @@
 import { Schema, model } from "mongoose";
 
-// Address sub-schema
-
-const addressSchema = new Schema(
-    {
-        street: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        city: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        state: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        zip: {
-            type: String,
-            required: true,
-            match: [/^\d{5}(-\d{4})?$/, 'Please enter a valid zip code'],
-        },
-        country: {
-            type: String,
-            required: true,
-            trim: true
-        }
-    }, { _id: false }
-);
-
 const collegeSchema = new Schema(
     {
         name: {
@@ -50,8 +18,8 @@ const collegeSchema = new Schema(
             max: [new Date.getFullYear(), "Established year cannot be in the future"]
         },
         address: {
-            type: addressSchema,
-            required: true
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
         },
         website: {
             type: String,
@@ -77,15 +45,17 @@ const collegeSchema = new Schema(
             trim: true,
             required: true
         },
-        ranking: {
-            type: Number,
-            min: [1, 'Ranking must be a positive number'],
-            max: [1000, 'Ranking is too high'],
-            required: true,
+        course: {
+            type: [String],
+            required: true
         },
         department: {
-            type: Schema.Types.ObjectId,
-            ref: 'Department'
+            type: [String],
+            required: true
+        },
+        branch: {
+            type: [String],
+            required: true
         }
     }
 );
