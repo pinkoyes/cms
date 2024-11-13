@@ -150,7 +150,7 @@ studentSchema.pre('save', async function (next) {
 });
 
 studentSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password, thsi.password);
+    return await bcrypt.compare(password, this.password);
 }
 
 studentSchema.methods.generateAccessToken = function () {
