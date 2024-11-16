@@ -5,6 +5,9 @@ import ErrorPage from "../pages/ErrorPage"
 import  Services from '../pages/Services'
 import AboutUs from '../pages/AboutUs'
 import ContactUs from '../pages/ContactUs'
+import Ask from "../pages/Ask"
+import College from '../pages/college/College'
+import Student from '../pages/student/Student'
 
 const router = createBrowserRouter([
     {
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
             {
                 path: 'contact-us',
                 element: <ContactUs />
+            },
+            {
+                path: 'ask',
+                element: <Ask />
+            },
+            {
+                path: 'college',
+                element: <College />
+            },
+            {
+                path: 'student',
+                element: <Student />
             }
         ],
     }
