@@ -7,7 +7,7 @@ const Button = ({
   disabled = false,
   type = 'button',
   size = 'medium',
-  variant = 'filled',
+  variant = 'blue',
 }) => {
   const baseClasses = `font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`
 
@@ -18,10 +18,10 @@ const Button = ({
   }
 
   const variantClasses = {
-    filled: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',
-    outlined: 'bg-transparent border-2 border-blue-500 text-blue-500 hover:bg-blue-50 active:bg-blue-100',
-    text: 'bg-transparent text-blue-500 hover:bg-blue-50 active:bg-blue-100',
-    red: 'bg-red-500 text-white hover:bg-red-600 active:bg-red-700'
+    blue: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',
+    red: 'bg-red-500 text-white hover:bg-red-600 active:bg-red-700',
+    green: 'bg-green-500 text-white hover:bg-green-600 active:bg-green-700',
+    black: 'bg-black text-white'
   }
 
   const disabledClasses = 'opacity-50 cursor-not-allowed'
