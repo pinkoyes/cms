@@ -4,19 +4,23 @@ import Button from '../../ui/Button';
 
 const College = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="space-y-4 text-center">
-        <h1 className="text-3xl font-bold mb-6">College Interface</h1>
-        <div className="space-y-2">
-          <Button variant="primary" fullWidth>
-            Register
-          </Button>
-          <Button variant="secondary" fullWidth>
-            Faculty
-          </Button>
-          <Button variant="success" fullWidth>
-            HOD
-          </Button>
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-xl bg-gray-50 border rounded-lg">
+        <div className="p-6">
+          <div className="flex flex-col space-y-4">
+            <Button variant='red'>
+              <Link to='/registar'>Registar</Link>
+            </Button>
+            <Button variant='green'>
+              <Link to='/hod'>HOD</Link>
+            </Button>
+            <Button>
+              <Link to='/faculty'>Faculty</Link>
+            </Button>
+            <Button variant='black'>
+              <Link to='/admin'>Admin</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
